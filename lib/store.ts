@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import { Chess } from "chess.js";
 
 interface engineData {
-    evaluation: number
+    evaluation: number | null
     mate: number | null
     bestmove: string
     continuation: string
