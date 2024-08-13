@@ -26,7 +26,10 @@ interface GameState {
     setPlayerElo: (newElo: number) => void,
 
     gameRunning: boolean,
-    setGameRunning: (newGameRunning: boolean) => void
+    setGameRunning: (newGameRunning: boolean) => void,
+
+    coachDialog: string,
+    setCoachDialog: (newCoachDialog: string) => void
   }
   
   const useGameStore = create<GameState>(set => ({
@@ -46,7 +49,10 @@ interface GameState {
     setPlayerElo: (newElo: number) => set({playerElo: newElo}),
 
     gameRunning: false,
-    setGameRunning: (newGameRunning: boolean) => set({gameRunning: newGameRunning})
+    setGameRunning: (newGameRunning: boolean) => set({gameRunning: newGameRunning}),
+
+    coachDialog: '',
+    setCoachDialog: (newCoachDialog: string) => set({coachDialog: newCoachDialog})
   }))
   
   export default useGameStore

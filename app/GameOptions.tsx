@@ -16,13 +16,19 @@ import { Chess } from "chess.js";
 
 export default function GameOptions() {
 
-    const {setGame, setPlayerColor, setPlayerElo, setGameRunning, game, playerColor, gameRunning} = useGameStore();
+    const {setGame, setPlayerColor, setPlayerElo, setGameRunning, game, playerColor, gameRunning, setCoachDialog} = useGameStore();
 
     const startNewGame = (color: 'white' | 'black', elo:number) => {
-        setPlayerColor(color),
-        setPlayerElo(elo),
-        setGame(new Chess()),
+        setPlayerColor(color)
+        setPlayerElo(elo)
+        setGame(new Chess())
         setGameRunning(true)
+        if (useGameStore.getState().playerColor === 'white') {
+            setCoachDialog('You are opening the game, make a move')
+        } else {
+            setCoachDialog('')
+        }
+        
     }
 
     const handleSubmit = (event: React.FormEvent) => {
@@ -38,9 +44,6 @@ export default function GameOptions() {
 
     return (
         <div className="p-2">
-            <div className="flex justify-center">
-                {gameRunning && (game.turn() === playerColor[0]) && <p className="text-blue-500">Make a move</p>}
-            </div>
             <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
                 <Label htmlFor="side">Select side</Label>
