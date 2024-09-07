@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import { limelight, ptserifcaption } from "./lib/fonts";
 
 const config = {
   darkMode: ["class"],
